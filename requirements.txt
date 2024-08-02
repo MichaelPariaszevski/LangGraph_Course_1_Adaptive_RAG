@@ -1,0 +1,8 @@
+beautifulsoup4 
+langchain
+langgraph 
+langchain-community 
+tavily-python 
+langchain-chroma 
+python-dotenv 
+pytest
