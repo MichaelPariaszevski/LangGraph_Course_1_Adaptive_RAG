@@ -20,20 +20,29 @@ from ingestion import retriever
 def test_retrieval_grader_answer_yes() -> None:
     question = "agent memory"
     docs = retriever.invoke(question)
-    doc_text = docs[1].page_content  # Document with highest score
+    doc_text = docs[0].page_content  # Document with highest score
 
     response: GradeDocuments = retrieval_grader_chain.invoke(
         input={"document": doc_text, "question": question}
     )
 
-    assert response.binary_score=="yes"
+    assert response.binary_score == "yes"
 
     # return response
 
     # "return response" is commented-out because this function (test_retireval_grader_answer_yes()) is meant to only serve as a test using pytest
-    
-example_response=test_retrieval_grader_answer_yes()
 
-print(example_response)
+
+def test_retrieval_grader_answer_no() -> None:
+    question = "How to make pizza"
+    docs = retriever.invoke(question)
+    doc_text = docs[0].page_content  # Document with highest score
+
+    response: GradeDocuments = retrieval_grader_chain.invoke(
+        input={"document": doc_text, "question": question}
+    )
+
+    assert response.binary_score == "no"
+
 
 # Run file using "pytest . -s -v" in the terminal
