@@ -7,4 +7,5 @@ langchain-chroma
 python-dotenv 
 pytest
 langchain-openai
-pydanti
+pydantic
+langchainhub

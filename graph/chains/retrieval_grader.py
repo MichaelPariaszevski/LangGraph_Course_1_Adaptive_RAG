@@ -1,16 +1,16 @@
 # Returns whether a document is relevant to the search query or not
-import sys
-import os
+# import sys
+# import os
 
-sys.path.append(os.getcwd())
+# sys.path.append(os.getcwd())
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_openai import ChatOpenAI
 
-from dotenv import load_dotenv, find_dotenv
+# from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv(), override=True)
+# load_dotenv(find_dotenv(), override=True)
 
 llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
 

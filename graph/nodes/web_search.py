@@ -1,18 +1,18 @@
 from typing import Any, Dict
 
-import sys
-import os 
+# import sys
+# import os 
 
-sys.path.append(os.getcwd())
+# sys.path.append(os.getcwd())
 
 from langchain.schema import Document
 from langchain_community.tools.tavily_search import TavilySearchResults
 
 from graph.state import GraphState
 
-from dotenv import load_dotenv, find_dotenv
+# from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv(), override=True)
+# load_dotenv(find_dotenv(), override=True)
 
 web_search_tool = TavilySearchResults(max_results=3)
 
@@ -35,7 +35,7 @@ def web_search(state: GraphState) -> Dict[str, Any]:
         documents=[web_results] 
     return {"question": question, "documents": documents}
 
-if __name__ =="__main__": 
-    result=web_search(state={"question": "agent_memory", "documents": None})  
-    print(result)
+# if __name__ =="__main__": 
+#     result=web_search(state={"question": "agent_memory", "documents": None})  
+#     print(result)
     
