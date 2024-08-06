@@ -3,15 +3,6 @@
 
 import os
 import sys
-
-print(os.getcwd())
-
-sys.path.append(
-    os.getcwd()
-)  # Make sure to be in the final folder of the git repository in the terminal (where the code is being executed); make sure that os.getcwd is /home/mpariaszevski/LangChain_Courses/LangGraph_Advanced_RAG/LangGraph_Course_1_CRAG
-
-import os
-import sys
 from dotenv import load_dotenv, find_dotenv
 
 print(os.getcwd())
@@ -26,30 +17,23 @@ from graph.chains.retrieval_grader import GradeDocuments, retrieval_grader_chain
 from ingestion import retriever
 
 
-# def test_retrieval_grader_answer_yes() -> None:
-#     question = "agent memory"
-#     docs = retriever.invoke(question)
-#     doc_text = docs[1].page_content  # Document with highest score
-
-#     response: GradeDocuments = retrieval_grader_chain.invoke(
-#         input={"document": doc_text, "question": question}
-#     )
-    
-#     assert response.binary_score=="yes"
-    
-#     return response 
-
-# example_response=test_retrieval_grader_answer_yes() 
-
-# print(example_response)
-
-def test_retrival_grader_answer_yes() -> None:
+def test_retrieval_grader_answer_yes() -> None:
     question = "agent memory"
     docs = retriever.invoke(question)
-    doc_txt = docs[1].page_content
+    doc_text = docs[1].page_content  # Document with highest score
 
-    res: GradeDocuments = retrieval_grader_chain.invoke(
-        {"question": question, "document": doc_txt}
+    response: GradeDocuments = retrieval_grader_chain.invoke(
+        input={"document": doc_text, "question": question}
     )
 
-    assert res.binary_score == "yes"
+    assert response.binary_score=="yes"
+
+    # return response
+
+    # "return response" is commented-out because this function (test_retireval_grader_answer_yes()) is meant to only serve as a test using pytest
+    
+example_response=test_retrieval_grader_answer_yes()
+
+print(example_response)
+
+# Run file using "pytest . -s -v" in the terminal

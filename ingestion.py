@@ -34,12 +34,12 @@ docs_split = text_splitter.split_documents(docs_list)
 #     documents=docs_split,
 #     collection_name="CRAG_Chroma",
 #     embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
-#     persist_directory="./.chroma",
-# )
+#     persist_directory="./chroma",
+# ) # FOR THE FIRST ITERATION OF RUNNING THIS DIRECTORY, THIS COMMENTED_OUT CODE SNIPPET MUST ALSO RUN
 
 retriever = Chroma(
     collection_name="CRAG_Chroma",
-    persist_directory="./.chroma",
+    persist_directory="./chroma",
     embedding_function=OpenAIEmbeddings(model="text-embedding-3-small"),
 ).as_retriever()
 
