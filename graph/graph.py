@@ -14,7 +14,7 @@ from graph.nodes import retrieve, grade_documents, web_search, generate
 from graph.state import GraphState
 
 def decide_to_generate(state): 
-    print("---Asess Graded Documents---") 
+    print("---Assess Graded Documents---") 
     
     if state["web_search"]: # found a document that is not relevant to the user's question/query 
         print(f"---Decision: Not All Documents Are Relevant to Question: {state['question']}")
