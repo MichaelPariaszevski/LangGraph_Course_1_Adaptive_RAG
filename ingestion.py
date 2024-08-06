@@ -30,12 +30,12 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 
 docs_split = text_splitter.split_documents(docs_list)
 
-# vector_store = Chroma.from_documents(
-#     documents=docs_split,
-#     collection_name="CRAG_Chroma",
-#     embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
-#     persist_directory="./chroma",
-# ) # FOR THE FIRST ITERATION OF RUNNING THIS DIRECTORY, THIS COMMENTED_OUT CODE SNIPPET MUST ALSO RUN
+vector_store = Chroma.from_documents(
+    documents=docs_split,
+    collection_name="CRAG_Chroma",
+    embedding=OpenAIEmbeddings(model="text-embedding-3-small"),
+    persist_directory="./chroma",
+) # FOR THE FIRST ITERATION OF RUNNING THIS DIRECTORY, THIS COMMENTED_OUT CODE SNIPPET MUST ALSO RUN
 
 retriever = Chroma(
     collection_name="CRAG_Chroma",

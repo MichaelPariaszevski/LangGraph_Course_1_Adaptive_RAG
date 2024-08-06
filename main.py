@@ -6,3 +6,5 @@ from graph.graph import app
 
 if __name__ == "__main__": 
     print("Hello Corrective RAG")
+    output=app.invoke(input={"question": "What is agent memory?"}) 
+    print(output)
