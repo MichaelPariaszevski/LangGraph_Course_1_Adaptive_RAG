@@ -3,7 +3,7 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv(), override=True)
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.document_loaders import WebBaseLoader # IMPORTANT (langchain_community.document_loaders)
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
@@ -41,7 +41,7 @@ retriever = Chroma(
     collection_name="CRAG_Chroma",
     persist_directory="./.chroma",
     embedding_function=OpenAIEmbeddings(model="text-embedding-3-small"),
-).as_retriever
+).as_retriever()
 
 if __name__ == "__main__":
     # print(docs)
