@@ -3,9 +3,9 @@
 
 # import os
 # import sys
-from dotenv import load_dotenv, find_dotenv
+# from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv(), override=True)
+# load_dotenv(find_dotenv(), override=True)
 
 # print(os.getcwd())
 
@@ -16,6 +16,7 @@ load_dotenv(find_dotenv(), override=True)
 from graph.chains.retrieval_grader import GradeDocuments, retrieval_grader_chain
 from graph.chains.generation import generation_chain
 from ingestion import retriever
+from graph.chains.router import question_router_chain, RouteQuery
 
 from graph.chains.hallucination_grader import GradeHallucinations, hallucination_grader_chain
 
@@ -74,5 +75,11 @@ def test_hallucination_grader_answer_no() -> None:
     response: GradeHallucinations=hallucination_grader_chain.invoke({"documents": docs, "generation": "In order to make pizza we need to first start with the dough"}) 
     
     assert response.binary_score==False
+
+def test_router_to_vectorstore() -> None: 
+    question="agent memory" 
+    response=question_router_chain.invoke(input={"question": question}) 
+    
+    assert response.datasource=="vectorstore"
 
 # Run file using "pytest . -s -v" in the terminal
