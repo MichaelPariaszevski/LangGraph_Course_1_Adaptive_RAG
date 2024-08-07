@@ -1,11 +1,13 @@
 # def test_foo() -> None: # Run file using "pytest . -s -v"
 #     assert 1==1
 
-# import os
-# import sys
-# from dotenv import load_dotenv, find_dotenv
+import os
+import sys
+sys.path.append(os.getcwd())
 
-# load_dotenv(find_dotenv(), override=True)
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv(), override=True)
 
 # print(os.getcwd())
 
@@ -81,5 +83,11 @@ def test_router_to_vectorstore() -> None:
     response=question_router_chain.invoke(input={"question": question}) 
     
     assert response.datasource=="vectorstore"
+    
+def test_router_to_websearch() -> None: 
+    question="how to make a pizza?" 
+    response=question_router_chain.invoke(input={"question": question}) 
+    
+    assert response.datasource=="websearch"
 
 # Run file using "pytest . -s -v" in the terminal
