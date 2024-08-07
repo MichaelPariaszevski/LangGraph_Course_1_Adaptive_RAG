@@ -24,4 +24,4 @@ answer_grader_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-answer_grader_chain: RunnableSequence=answer_grader_prompt | structured_llm_grader
+answer_grader_chain: RunnableSequence = answer_grader_prompt | structured_llm_grader
